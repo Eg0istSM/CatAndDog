@@ -15,3 +15,12 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Post(models.Model):
+    author = models.ForeignKey(Users, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
+    category = models.ManyToManyField(Category, through='PostCategory')
+    text = models.TextField()
+
+
