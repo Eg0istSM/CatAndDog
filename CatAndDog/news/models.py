@@ -1,4 +1,4 @@
-
+from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -21,6 +21,5 @@ class Post(models.Model):
     author = models.ForeignKey(Users, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, through='PostCategory')
-    text = models.TextField()
-
+    text = CKEditor5Field()
 
