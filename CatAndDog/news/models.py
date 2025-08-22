@@ -23,3 +23,8 @@ class Post(models.Model):
     category = models.ManyToManyField(Category, through='PostCategory')
     text = CKEditor5Field()
 
+
+class PostCategory(models.Model):
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
