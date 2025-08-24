@@ -1,4 +1,4 @@
-from django_ckeditor_5.fields import CKEditor5Field
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -21,7 +21,7 @@ class Post(models.Model):
     author = models.ForeignKey(Users, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, through='PostCategory')
-    text = CKEditor5Field()
+    text = RichTextUploadingField(blank=True)
 
 
 class PostCategory(models.Model):
@@ -34,3 +34,10 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     time_comm = models.DateTimeField(auto_now_add=True)
+
+
+class Pets(models.Model):
+    name = models.TextField()
+    date = models.TextField()
+    text = models.TextField()
+    photo = RichTextUploadingField()
